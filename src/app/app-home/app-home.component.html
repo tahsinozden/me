@@ -1,0 +1,19 @@
+<h2>GitHub Repos</h2>
+<table class="table">
+  <tr>
+    <td>Name</td>
+    <td>Link</td>
+  </tr>
+  <tr *ngFor="let repo of (userRepos | async )">
+    <td>
+      <div>
+        <p data-toggle="tooltip" [title]="repo.description">{{ repo.name }}</p>
+        <span class="badge">{{ repo.language }}</span>
+      </div>
+    </td>
+
+    <td>
+      <a [href]="repo.url">{{ repo.url }}</a>
+    </td>
+  </tr>
+</table>
