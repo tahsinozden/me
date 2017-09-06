@@ -1,7 +1,7 @@
 # tahsinozden.github.io/me
 
 A small page for representing my GitHub projects and some information about me.
-[Link](tahsinozden.github.io/me)
+[tahsinozden.github.io/me](https://tahsinozden.github.io/me)
 
 ## Development server
 
