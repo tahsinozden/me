@@ -8,7 +8,13 @@
     <tr *ngFor="let repo of repos">
       <td>
         <div>
-          <p data-toggle="tooltip" [title]="repo.description">{{ repo.name }}</p>
+          <a href="#" style="color: black">
+            <p data-toggle="tooltip"
+               [title]="repo.description"
+               data-toggle="modal"
+               data-target=".readme-info-modal"
+                (click)="onClickRepoName(repo.name)">{{ repo.name }}</p>
+          </a>
           <span class="badge">{{ repo.language }}</span>
         </div>
       </td>
@@ -23,14 +29,24 @@
   <div class="loader"></div>
 </ng-template>
 
-<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade readme-info-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      ...
+      <div class="row">
+        <div class="col-md-12">
+          <!--<div class="white-space-pre" *ngIf="readMeLoaded; else readmeLoad" [innerHTML]="readMeContent">-->
+          <div class="white-space-pre" *ngIf="readMeLoaded; else readmeLoad" [innerHTML]="readMeContent">
+              {{ readMeContent }}
+          </div>
+          <ng-template #readmeLoad>
+            <p>Loading...</p>
+          </ng-template>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
 
 
