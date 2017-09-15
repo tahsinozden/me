@@ -13,7 +13,7 @@ import {AppAboutComponent} from './app-about/app-about.component';
 const appRoutes: Routes = [
     {path: '', component: AppHomeComponent},
     {path: 'about', component: AppAboutComponent}
-]
+];
 
 @NgModule({
     declarations: [
@@ -27,7 +27,6 @@ const appRoutes: Routes = [
         FormsModule,
         RouterModule.forRoot(
             appRoutes,
-            // {enableTracing: true} // <-- debugging purposes only
         )
     ],
     providers: [GithubService],
