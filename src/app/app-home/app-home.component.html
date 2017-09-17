@@ -19,8 +19,8 @@
         </div>
       </td>
 
-      <td>
-        <a target="_blank" [href]="repo.url">{{ repo.url }}</a>
+      <td class="wrap-url">
+        <a target="_blank" [href]="repo.url">{{ shortenUrl(repo.url) }}</a>
       </td>
     </tr>
   </table>

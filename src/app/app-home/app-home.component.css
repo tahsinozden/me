@@ -2,3 +2,9 @@
     white-space: pre-wrap;
     text-align: center;
 }
+
+.wrap-url {
+    word-wrap: break-word;
+    min-width: 160px;
+    max-width: 160px;
+}

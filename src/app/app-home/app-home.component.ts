@@ -35,6 +35,10 @@ export class AppHomeComponent implements OnInit {
             );
     }
 
+    shortenUrl(fullUrl: string) {
+        return fullUrl.slice(('https://github.com/').length);
+    }
+
     ngOnInit() {
     }
 
