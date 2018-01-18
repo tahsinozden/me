@@ -2,9 +2,12 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/Rx';
 import {UserRepo} from '../model/user-repo.model';
+import {AppDB} from '../model/app.db.model';
+import {Observable} from 'rxjs/Observable';
 
 const GITHUB_API_URL = 'https://api.github.com';
-const REPO_EXCLUSIONS = ['tahsinozden.github.io'];
+const REPO_EXCLUSIONS = ['tahsinozden.github.io', 'me-db'];
+const USER_NAME = 'tahsinozden';
 
 @Injectable()
 export class GithubService {
@@ -16,10 +19,21 @@ export class GithubService {
             .map((data: object[]) => this.filterAndSortData(data));
     }
 
-    getRepoReadmeByUser(userName: string, repoName: string) {
-        return this.httpClient.get(GITHUB_API_URL + '/repos/' + userName + '/' + repoName + '/contents/README.md')
+    getRepoFileByUser(userName: string, repoName: string, fileName: string) {
+        return this.httpClient.get(GITHUB_API_URL + '/repos/' + userName + '/' + repoName + '/contents/' + fileName)
             .map(data => {
                 return atob(data['content']);
+            });
+    }
+
+    getRepoReadmeByUser(userName: string, repoName: string) {
+        return this.getRepoFileByUser(userName, repoName, 'README.md');
+    }
+
+    getAppDB(): Observable<AppDB> {
+        return this.getRepoFileByUser(USER_NAME, 'me-db', 'db.json')
+            .map(data => {
+                return JSON.parse(data);
             });
     }
 
