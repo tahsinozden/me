@@ -42,8 +42,8 @@
         <div class="row">
           <div class="col-md-12">
             <!--<div class="white-space-pre" *ngIf="readMeLoaded; else readmeLoad" [innerHTML]="readMeContent">-->
-            <div class="white-space-pre" *ngIf="readMeLoaded; else readmeLoad" [innerHTML]="readMeContent">
-              {{ readMeContent }}
+            <div style="padding-left:20px;" *ngIf="readMeLoaded; else readmeLoad">
+                <div markdown [data]="readMeContent"></div>
             </div>
             <ng-template #readmeLoad>
               <p>Loading...</p>
